@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- demo1 -->
+    <h1 id="tieude">Tiêu đề 1</h1>
+
+    <div id="title" name="gam" data-id="111"  data-game="ngo" >
+        <p>agdfasdf</p>
+        tôi la gam
+    </div>
+
+    <style>
+        table, th, td {
+          border: 1px solid black;
+        }
+    </style>
+
+    <table>
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>name</td>
+                <td>action</td>
+            </tr>
+        </thead>
+
+
+        <tr>
+            <td>1</td>
+            <td>tu</td>
+            <td><button data-id="1">edit</button></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>gam</td>
+            <td><button data-id="2">edit</button></td>
+        </tr>
+    </table>
+
+ 
+    <!-- demo2 -->
+    <ul class="menu">
+        <li class="item"><a href="">menu</a></li>
+        <li class="item current"><a href="">menu</a></li>
+        <li class="item"><a href="">menu</a></li>
+        <li class="item"><a href="">menu</a></li>
+        <li class="item"><a href="">menu</a></li>
+    </ul>
+
+    <script>
+        const titleD = document.getElementById('title');
+        console.log(titleD);
+        console.log('innerHtml',titleD.innerHTML);
+        console.log('outerHtml', titleD.outerHTML);
+        console.log('textContent',titleD.textContent);
+        console.log('attributeID',titleD.dataset.id);
+        console.log('attributeID',titleD.dataset.game);
+        titleD.setAttribute('name', "gammmmmm")
+
+        const listLi = document.getElementsByTagName('li');
+        console.log(listLi);
+
+
+        var a = 'toi';
+        var b = 'la';
+        var c = 'gam';
+        var text = a + ' ' + b + ' ' + c;
+
+        console.log(text);
+        var textConvert = [a,b,c].join(' ');
+        console.log(textConvert)
+        
+        
+    </script>
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>

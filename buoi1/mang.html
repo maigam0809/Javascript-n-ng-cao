@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mảng trong js nâng cao</title>
+</head>
+<body>
+    <script>
+    const array1 = [1, 4, 9, 16];
+
+
+    // foreach và for đều tác động trực tiếp vào thằng mảng array2 ban đầu lên để tránh tác động vào các phần tử thì ta lên sử dụng thằng array.map
+    array1.forEach(function(item){
+    return item *2;
+    })
+
+    // pass a function to map
+    const result = array1.map(function(item){
+    return item *2;
+    })
+
+    const result = array1.map(item => item * 2);
+
+    console.log(result);
+    // expected output: Array [2, 8, 18, 32]
+
+    </script>
+</body>
+</html>

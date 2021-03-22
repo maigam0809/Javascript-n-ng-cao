@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bài tập 2</title>
+    <style>
+        #color{
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            margin-bottom: 20px;
+            width: 200px;
+        }
+
+        #target {
+        border: 1px solid #000;
+        min-height: 300px;
+
+        }
+        .title{
+            color: red;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" name="" id="txtInput" value="33691E">
+    <h3>Input text</h3>
+    <div id="target">
+        
+    </div>
+    <script>
+        var h3Text = document.querySelector("h3");
+        var txtInput = document.querySelector("#txtInput");
+        var target = document.querySelector("#target");
+        var h3EL = document.createElement("h2");
+        
+        txtInput.onkeyup = function (){
+            h3Text.innerText = txtInput.value;
+           
+        }
+        h3EL.innerText ="Hello Poly";
+        h3EL.setAttribute("class","title");
+        target.appendChild(h3EL);
+            
+
+
+    </script>
+</body>
+</html>
