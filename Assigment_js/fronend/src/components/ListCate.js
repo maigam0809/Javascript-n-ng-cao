@@ -106,7 +106,7 @@ const ListCate = {
                                 <td>${index}</td>
                                 <td>${category.name}</td>
                                 <td>
-                                <img src="${category.image}" alt="${category.image}" class="" style="max-width: 100%;"> 
+                                <img src="http://127.0.0.1:8000/${category.image}" alt="${category.image}" class="" style="max-width: 100%;"> 
                                 </td>
                                 
                                 <td>

@@ -5,17 +5,35 @@ import productAPI from "../api/productAPI";
 
 const CategoryPage = {
     async render(){
+        // console.log("go herre");
         
-        const {id}  = parseRequestUrl();
+        // const {id}  = parseRequestUrl();
         // console.log(id);
-
-        const {data: products} = await productAPI.getAll();
-        const quantitySold = products.sort((a, b) =>b.quantity_sold - a.quantity_sold).slice(0,5);
-
-        // const {id} = parseRequestUrl();
-        // console.log(products);
         
-        const result = products.filter(product => product.cate_id == id).map(product=>{
+    const { id } = parseRequestUrl()
+    const products = (await ProductAPI.getAll()).data;
+    const category_name = (await categoryAPI.get(id)).data.name;
+    console.log(category_name);
+
+    const products_cate = [];
+    products.map(item => {
+      if(item.category_id == id){
+        products_cate.push(item); 
+      }
+    })
+    console.log(products_cate);
+
+        // const {data: categories} = await CategoryAPI.getAll();
+        // console.log(categories);
+        // const {data: products} = await productAPI.getAll();
+        
+        // const quantitySold = products.sort((a, b) =>b.quantity - a.quantity).slice(0,5);
+        // console.log(products);
+        // const {id} = parseRequestUrl();
+
+        
+        
+        const result = products.filter(product => product.category_id == id).map(product=>{
                             return  /*html*/`
                                 <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3" style="  margin-bottom: 10px;">
                                     <div class="product_border">
@@ -37,7 +55,7 @@ const CategoryPage = {
                                                 <div class="product-thumbnail">
                                                     <a class="image_link" href="/#/products/${product.id}" title="${product.name}">
                                                         <img class="lazyload loaded"
-                                                            src="${product.image}">
+                                                            src="http://127.0.0.1:8000/${product.image}">
                                                     </a>
                                                     <div class="pro_action">
                                                         <form action="" method="post">
@@ -89,7 +107,7 @@ const CategoryPage = {
                                                 ${
                                                     categories.map(category=>{
                                                         return `
-                                                        <li class="nav-item lv1"><a href="/#/categories/${category.id}" class="nav-link"><img class="hiden-none" src="${category.image}" alt="" style="margin-right: 15px;">
+                                                        <li class="nav-item lv1"><a href="/#/categories/${category.id}" class="nav-link"><img class="hiden-none" src="http://127.0.0.1:8000/${category.image}" alt="" style="margin-right: 15px;">
                                                         ${category.name}
                                                         </a></li>
                                                         `
@@ -128,7 +146,7 @@ const CategoryPage = {
                                                             <div class="product-mini-item clearfix on-sale">
                                                                 <a href="/#/products/${product.id}"
                                                                     class="product-img">
-                                                                    <img src="${product.image}"alt="${product.image}">
+                                                                    <img src="http://127.0.0.1:8000/${product.image}"alt="${product.image}">
                                                                 </a>
                                                                 <div class="product-info">
                                                                     <h3>

@@ -10,7 +10,7 @@ const ProductsSale = {
         // console.log(id);
 
         const {data: products} = await productAPI.getAll();
-        const quantitySold = products.sort((a, b) =>b.quantity_sold - a.quantity_sold).slice(0,5);
+        const quantitySold = products.sort((a, b) =>b.quantity - a.quantity).slice(0,5);
         const pro_sale12 = products.sort((a, b) =>b.sale - a.sale).slice(0,12);
 
         // const {id} = parseRequestUrl();
@@ -90,7 +90,7 @@ const ProductsSale = {
                                                 ${
                                                     categories.map(category=>{
                                                         return `
-                                                        <li class="nav-item lv1"><a href="/#/categories/${category.id}" class="nav-link"><img class="hiden-none" src="${category.image}" alt="" style="margin-right: 15px;">
+                                                        <li class="nav-item lv1"><a href="/#/categories/${category.id}" class="nav-link"><img class="hiden-none" src="http://127.0.0.1:8000/${category.image}" alt="" style="margin-right: 15px;">
                                                         ${category.name}
                                                         </a></li>
                                                         `
@@ -129,7 +129,7 @@ const ProductsSale = {
                                                             <div class="product-mini-item clearfix on-sale">
                                                                 <a href="/#/products/${product.id}"
                                                                     class="product-img">
-                                                                    <img src="${product.image}"alt="${product.image}">
+                                                                    <img src="http://127.0.0.1:8000/${product.image}"alt="${product.image}">
                                                                 </a>
                                                                 <div class="product-info">
                                                                     <h3>

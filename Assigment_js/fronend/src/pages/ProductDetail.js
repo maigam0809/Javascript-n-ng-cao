@@ -29,7 +29,7 @@ const ProductDetail ={
                     <div class="container info">
                         <div class="row">
                             <div class="image col-lg-5 col-md-6 col-sm-12">
-                                <img src="${product.image}" alt="">
+                                <img src="http://127.0.0.1:8000/${product.image}" alt="">
                             </div>
                             <div class="info-product col-lg-5 col-md-6 col-sm-12">
                                 <p>
@@ -91,7 +91,7 @@ const ProductDetail ={
                     <div class="container info pl-4">
                         <h2 style="font-family:Arial;font-size: 2rem; font-weight:bold; margin: 10px 5px;">Mô tả </h2>
                         <p style="font-size: 16px;">
-                            ${product.detail}
+                            ${product.description}
                         </p>
                     </div>
                     <div class="container info pl-3">
@@ -109,9 +109,9 @@ const ProductDetail ={
                                         type: 'post',
                                         url: 'http://localhost<?= BASE_URL?>/ajaxcomment/index',
                                         data: {
-                                            customer_id: customer_id,
+                                            user_id: customer_id,
                                             product_id: product_id,
-                                            comment: comment
+                                            content: comment
                                         }
 
                                         ,

@@ -8,18 +8,20 @@ const HomePage ={
             // console.log(id);
             // Lấy tất cả dữ liệu của bang products
             const {data: products} = await productAPI.getAll();
+            // console.log(products);
             
             // Sắp sếp sản phẩm theo lượt người đã mua hàng
-            const quantitySold = products.sort((a, b) =>b.quantity_sold - a.quantity_sold).slice(0,5);
+            const quantitySold = products.sort((a, b) =>b.quantity - a.quantity).slice(0,5);
             // console.log(quantitySold);
 
             // Lấy list các loại sản phẩm
-            const vegetableFood5 = products.filter(product => product.cate_id == 1).slice(0,5);
-            const seafood5 = products.filter(product => product.cate_id == 2).slice(0,5);
-            const fruit5 = products.filter(product => product.cate_id == 3).slice(0,5);
-            const dryFood = products.filter(product => product.cate_id == 4).slice(0,5);
-            const  meat5=  products.filter(product => product.cate_id == 5).slice(0,5);
-            // console.log(a);
+            const vegetableFood5 = products.filter(product => product.category_id == 1).slice(0,5);
+            const seafood5 = products.filter(product => product.category_id == 2).slice(0,5);
+            const fruit5 = products.filter(product => product.category_id == 3).slice(0,5);
+            const dryFood = products.filter(product => product.category_id == 4).slice(0,5);
+            const  meat5=  products.filter(product => product.category_id == 5).slice(0,5);
+            
+            // console.log(meat5);
            
         return /*html*/`
             <div class="container " >
@@ -88,7 +90,7 @@ const HomePage ={
                                                             </div>
                                                             <div class="product-thumbnail">
                                                                 <a class="image_link" href="/#/products/${product.id}" title="${product.name}">
-                                                                    <img class="lazyload loaded" src="${product.image}" style="width:200px;height:200px;">
+                                                                    <img class="lazyload loaded" src="http://127.0.0.1:8000/${product.image}" style="width:200px;height:200px;">
                                                                 </a>
                                                                 <div class="pro_action">
                                                                     <form action="" method="post">
@@ -164,7 +166,7 @@ const HomePage ={
                                                 </div>
                                                 <div class="product-thumbnail">
                                                     <a class="image_link" href="/#/products/${product.id}" title="${product.name}">
-                                                        <img class="lazyload loaded" src="${product.image}">
+                                                        <img class="lazyload loaded" src="http://127.0.0.1:8000/${product.image}">
                                                     </a>
                                                     <div class="pro_action">
                                                         <form action="" method="post">
@@ -233,7 +235,7 @@ const HomePage ={
                                                 </div>
                                                 <div class="product-thumbnail">
                                                     <a class="image_link" href="/#/products/${product.id}" title="${product.name}">
-                                                        <img class="lazyload loaded" src="${product.image}">
+                                                        <img class="lazyload loaded" src="http://127.0.0.1:8000/${product.image}">
                                                     </a>
                                                     <div class="pro_action">
                                                         <form action="" method="post">
@@ -301,7 +303,7 @@ const HomePage ={
                                                 </div>
                                                 <div class="product-thumbnail">
                                                     <a class="image_link" href="/#/products/${product.id}" title="${product.name}">
-                                                        <img class="lazyload loaded" src="${product.image}">
+                                                        <img class="lazyload loaded" src="http://127.0.0.1:8000/${product.image}">
                                                     </a>
                                                     <div class="pro_action">
                                                         <form action="" method="post">
@@ -368,7 +370,7 @@ const HomePage ={
                                                 </div>
                                                 <div class="product-thumbnail">
                                                     <a class="image_link" href="/#/products/${product.id}" title="${product.name}">
-                                                        <img class="lazyload loaded" src="${product.image}">
+                                                        <img class="lazyload loaded" src="http://127.0.0.1:8000/${product.image}">
                                                     </a>
                                                     <div class="pro_action">
                                                         <form action="" method="post">
@@ -455,7 +457,7 @@ const HomePage ={
                                         </div>
                                         <div class="product-thumbnail">
                                             <a class="image_link" href="/#/products/${product.id}" title="${product.name}">
-                                                <img class="lazyload loaded" src="${product.image}">
+                                                <img class="lazyload loaded" src="http://127.0.0.1:8000/${product.image}">
                                             </a>
                                             <div class="pro_action">
                                                 <form action="" method="post">

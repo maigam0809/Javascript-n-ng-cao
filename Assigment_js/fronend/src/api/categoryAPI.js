@@ -6,7 +6,7 @@ const CategoryAPI = {
         return axiosClient.get(url);
     },
     get(id){
-        const url = `/categories/${id}`;
+        const url = `/categories/${id}`;  
         return axiosClient.get(url);
     },
     add(category){
@@ -24,3 +24,14 @@ const CategoryAPI = {
    
 }
 export default CategoryAPI;
+
+// api laravel
+// {
+//     "success": true,
+//     "data": [
+
+//     ]
+// }
+
+// api db.json
+// []

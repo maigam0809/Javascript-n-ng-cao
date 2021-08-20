@@ -5,6 +5,7 @@ import Error404 from './pages/Error404Page.js';
 
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
+import Menu from './components/Menu.js';
 
 
 // client
@@ -18,7 +19,8 @@ import ContactPage from './pages/Contact.js';
 import RegisterPage from './pages/Register.js';
 import LoginPage from './pages/Login.js';
 import ProductsSale from './pages/Product_Sale.js';
-import NewDetail from './pages/NewDetail.js';
+// import NewDetail from './pages/NewDetail.js';
+import Search from './pages/Search.js';
 
 
 // Admin
@@ -28,11 +30,11 @@ import ProductEditPage from './components/ProductEditPage.js';
 import ListCate from './components/ListCate.js';
 import CateEdit from './components/CateEdit.js';
 import CateAddPage from './components/AddCate.js';
-import ListNews from './components/ListNew.js';
-import NewAdd from './components/AddNew.js';
-import NewEdit from './components/NewEdit.js';
-import ListContact from './components/ListContact.js';
-import ListUser from './components/ListUser.js';
+// import ListNews from './components/ListNew.js';
+// import NewAdd from './components/AddNew.js';
+// import NewEdit from './components/NewEdit.js';
+// import ListContact from './components/ListContact.js';
+// import ListUser from './components/ListUser.js';
 
 
 
@@ -53,19 +55,20 @@ const routers ={
     '/addcate': CateAddPage,
     '/editcategory/:id': CateEdit,
     '/editproducts/:id': ProductEditPage,
-    '/listnews' : ListNews,
-    '/editnew/:id' : NewEdit,
-    '/addnew' : NewAdd,
-    '/new/:id' : NewDetail,
-    '/listcontacts' : ListContact,
-    '/listuser' : ListUser
+    // '/listnews' : ListNews,
+    // '/editnew/:id' : NewEdit,
+    // '/addnew' : NewAdd,
+    // '/new/:id' : NewDetail,
+    // '/listcontacts' : ListContact,
+    // '/listuser' : ListUser,
+    // '/search/:name' : Search
 }
 
 
 const router = async()=> {
     const { resource, id} =  parseRequestUrl();
 
-    // console.log(parseRequestUrl());
+    console.log(parseRequestUrl());
     // console.log(id);
 
     const parseUrl = (resource ? `/${resource}` : '/' ) +
@@ -73,9 +76,10 @@ const router = async()=> {
     
     // console.log(parseUrl);
     const page =  routers[parseUrl] ? routers[parseUrl] : Error404;
-    console.log(page);
+    // console.log(page);
 
     $('#header').innerHTML = await Header.render();
+    $('#listMenu').innerHTML = await Menu.render();
     $('#main-content').innerHTML = await page.render();
     // await page.afterRender();
     if (page.afterRender) {

@@ -15,6 +15,7 @@ const ListProducts = {
                   <th>Name</th>
                   <th>Price</th>
                   <th>Image</th>
+                  <th>CategoryID</th>
                   <th>Action</th>
                   <th><a href="/#/addproducts">Tạo mới</a></th>
                 </tr>
@@ -26,9 +27,10 @@ const ListProducts = {
                         <td>${index}</td>
                         <td>${product.name}</td>
                         <td style="max-width: 150px;">
-                        <img src="${product.image}" alt="${product.image}" class="" style="max-width: 100%; height: 100px;"> 
+                        <img src="http://127.0.0.1:8000/${product.image}" alt="${product.image}" class="" style="max-width: 100%; height: 100px;"> 
                         </td>
                         <td>${product.price}</td>
+                        <td>${product.category_id}</td>
                        
                         <td>
                             <a class="btn btn-success btn-edit" href="/#/editproducts/${product.id}">

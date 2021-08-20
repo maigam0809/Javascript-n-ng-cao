@@ -5,8 +5,8 @@ import {reRender, $} from '../untils.js';
 
 const ListUser = {
     async render(){
-        const {data : categories} =await UserAPI.getAll();
-        // console.log(categories);
+        const {data : users} =await UserAPI.getAll();
+        console.log(users);
         return /*html*/`
             <div class="row">
               <nav class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -99,14 +99,14 @@ const ListUser = {
                         </tr>
                         </thead>
                         <tbody>
-                            ${categories.map((category, index)=>{
+                            ${users.map((user, index)=>{
                                 return /*html*/`
                             <tr>
                                 <td>${index}</td>
-                                <td>${category.user_name}</td>
-                                <td>${category.email}</td>
+                                <td>${user.first_name}</td>
+                                <td>${user.email}</td>
                                 <td>
-                                <img src="${category.image}" alt="${category.image}" class="" style="max-width: 100%;"> 
+                                <img src="http://127.0.0.1:8000/${user.image}" alt="${user.image}" class="" style="max-width: 100%;"> 
                                 </td>
                               
                             </tr>`

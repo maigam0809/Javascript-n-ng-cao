@@ -1,19 +1,74 @@
-// import { parseRequestUrl } from "../untils";
+import { parseRequestUrl } from "../untils";
 import productAPI from "../api/productAPI";
 import CategoryAPI from "../api/categoryAPI";
 
 
-const ProductSellings = {
+const Search = {
     async render(){
+        
         const {id}  = parseRequestUrl();
         // console.log(id);
 
         const {data: products} = await productAPI.getAll();
-        const quantitySold = products.sort((a, b) =>b.quantity - a.quantity).slice(0,5);
-        const pro_sale12 = products.sort((a, b) =>b.quantity - a.quantity).slice(0,10);
+        const quantitySold = products.sort((a, b) =>b.quantity_sold - a.quantity_sold).slice(0,5);
+        const pro_sale12 = products.sort((a, b) =>b.sale - a.sale).slice(0,12);
 
+        // const {id} = parseRequestUrl();
+        // console.log(products);
+        
+        // const result = pro_sale.map(product=>{
+        //                     return  /*html*/`
+        //                         <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3" style="  margin-bottom: 10px;">
+        //                             <div class="product_border">
+        //                                 <div class="product-box-h">
+        //                                     <div class="border_in">
+        //                                         <div class="icon_pro">
+        //                                             <div class="price"  style="background-color:green;margin-left: -12px;  padding: 5px 6px;">
+        //                                                 <a data-toggle="modal" data-target="#myModal"
+        //                                                     class="xem_nhanh " href="">
+        //                                                     ${product.sale}%
+        //                                                 </a>
+        //                                             </div>
+        //                                             <div>
+        //                                                 <a class="like" href="#">
+        //                                                     <i class="far fa-heart"></i>
+        //                                                 </a>
+        //                                             </div>
+        //                                         </div>
+        //                                         <div class="product-thumbnail">
+        //                                             <a class="image_link" href="/#/products/${product.id}" title="${product.name}">
+        //                                                 <img class="lazyload loaded"
+        //                                                     src="${product.image}">
+        //                                             </a>
+        //                                             <div class="pro_action">
+        //                                                 <form action="" method="post">
+        //                                                     <input type="hidden" name="" value="">
+        //                                                     <button class="btn btn-cart hidden ">Thêm vào giỏ
+        //                                                         hàng</button>
+        //                                                 </form>
+        //                                             </div>
+        //                                         </div>
+        //                                         <div class="product-info">
+        //                                             <h3 class="product-name"><a class="height_name" href="/#/products/${product.id}"
+        //                                                     title="${product.name}">${product.name}</a>
+        //                                             </h3>
+        //                                             <div class="product-hides">
+        //                                                 <div class="price-box clearfix">
+        //                                                     <span class="price product-price">${product.price}₫/kg</span>
+        //                                                     <span class="price product-price-old">
+        //                                                         <del> ${product.price}₫/kg</del>
+        //                                                     </span>
+        //                                                 </div>
+        //                                             </div>
+        //                                         </div>
+        //                                     </div>
+        //                                 </div>
+        //                             </div>
+        //                         </div>
+        //                     `;
+        //                 }).join("");
         const {data: categories} = await CategoryAPI.getAll();
-        //   console.log(categories);
+        
         return /*html*/`
                 <div class="content content_sale">
                     <div class="container col-12 col-bg">
@@ -35,7 +90,7 @@ const ProductSellings = {
                                                 ${
                                                     categories.map(category=>{
                                                         return `
-                                                        <li class="nav-item lv1"><a href="/#/categories/${category.id}" class="nav-link"><img class="hiden-none" src="http://127.0.0.1:8000/${category.image}" alt="" style="margin-right: 15px;">
+                                                        <li class="nav-item lv1"><a href="/#/categories/${category.id}" class="nav-link"><img class="hiden-none" src="${category.image}" alt="" style="margin-right: 15px;">
                                                         ${category.name}
                                                         </a></li>
                                                         `
@@ -74,7 +129,7 @@ const ProductSellings = {
                                                             <div class="product-mini-item clearfix on-sale">
                                                                 <a href="/#/products/${product.id}"
                                                                     class="product-img">
-                                                                    <img src="http://127.0.0.1:8000/${product.image}"alt="${product.image}">
+                                                                    <img src="${product.image}"alt="${product.image}">
                                                                 </a>
                                                                 <div class="product-info">
                                                                     <h3>
@@ -118,7 +173,7 @@ const ProductSellings = {
                                         <div class="aside-title">
                                             <div class="title_module border_bottom_10">
                                                 <h2>
-                                                Top 10 Sản Phẩm Bán Chạy
+                                                Top 12 Giảm Giá Nhiều Nhất
                                                 </span>
                                                 </h2>
                                             </div>
@@ -148,7 +203,7 @@ const ProductSellings = {
                                                                             <div class="product-thumbnail">
                                                                                 <a class="image_link" href="/#/products/${product.id}" title="${product.name}">
                                                                                     <img class="lazyload loaded"
-                                                                                        src="http://127.0.0.1:8000/${product.image}">
+                                                                                        src="${product.image}">
                                                                                 </a>
                                                                                 <div class="pro_action">
                                                                                     <form action="" method="post">
@@ -196,4 +251,4 @@ const ProductSellings = {
         return `abc`;
     }
 }
-export default ProductSellings;
+export default Search;
